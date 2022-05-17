@@ -1,0 +1,18 @@
+# common
+makemove() {
+  mkdir $1
+  cd $1
+}
+
+# git
+git_branch() {
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
+
+git_log() {
+  if [ -z $1 ]; then
+    git log --oneline -n 5
+  else
+    git log --oneline -n $1
+  fi
+}
