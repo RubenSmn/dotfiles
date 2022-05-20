@@ -1,8 +1,19 @@
+# directory
+alias ll='ls -alF'
+alias la='ls -A'
+
 # common
 alias mm='makemove'
+alias cl='clear'
+alias cdd='cd ..' # cd down
 
 # git
 alias gs='git status'
 alias gl='git_log'
-alias ga='git add $1'
-alias gc='git commit -m $1'
+alias ga='git add'
+alias gb='git branch'
+alias gba='git branch -a'
+alias gc='git commit -m'
+alias gf='git fetch'
+alias gpul='git pull'
+alias gpus='git push'
