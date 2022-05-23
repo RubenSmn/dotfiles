@@ -12,7 +12,80 @@ git_branch() {
 git_log() {
   if [ -z $1 ]; then
     git log --oneline -n 5
-  else
+  elif [[ $1 =~ ^[0-9]+$ ]]; then
     git log --oneline -n $1
+  else
+    git log --oneline -n 20 $1
+  fi
+}
+
+# projects
+fav() {
+  save_file=~/.bash/fav_projects
+  OPTIND=1
+
+  if ! [ -f $save_file ]; then
+    touch $save_file
+  fi
+
+  while getopts "a:d:hl" flag; do
+    project=$OPTARG
+    case $flag in
+      a)
+	current_projects=$(grep -roP "^"$project"(?= \/)" "$save_file")
+	if [ "$current_projects" == "$project" ]; then
+	  project_path=$(grep -roP "(?<=^"$project" ).*" $save_file)
+	  echo "$project already exists at $project_path"
+	  return
+	else
+	  echo "$project $PWD" >> $save_file
+	  echo "added: $project at $PWD"
+	  return
+	fi
+	;;
+      l)
+	echo "PROJECTS:"
+	cat $save_file
+	return
+	;;
+      d)
+	current_projects=$(grep -roP "^"$project"(?= \/)" "$save_file")
+	if [ "$current_projects" == "$project" ]; then
+	  sed -i '/^'$project' \//d' $save_file | wenky
+	  echo "$project deleted"
+	  return
+	else
+	  echo "$project not found"
+	  return
+	fi
+	;;
+      h)
+	echo -e "NAME"
+	echo -e "    fav"
+	echo -e "DESCRIPTION"
+	echo -e "    program to quickly navigate between directories"
+	echo -e "    script usage: <project-name> [-l] [-a <project-name>] [-d <project-name>] [-h]\n"
+	echo -e "    <project-name>\n        go to project <project-name> returns the project path\n"
+	echo -e "    -l\n        list of all the saved projects\n"
+	echo -e "    -a <project-name>\n        adds the project with the current directory\n"
+	echo -e "    -d <project-name>\n        removes the project\n"
+	echo -e "    -h help"
+	return
+	;;
+    esac
+    shift
+  done
+
+  if [ $1 ]; then
+    project_path=$(grep -roP "(?<=^"$1" ).*" $save_file)
+    if [ -z $project_path ]; then
+      echo "$1 not found"
+    else
+      cd $project_path
+      echo $project_path
+    fi
+  else
+    echo "use -h for help"
+    return
   fi
 }
