@@ -1,3 +1,7 @@
+if has("termguicolors")
+  set termguicolors
+endif
+
 """"""""""""""""""""""""""""""""""""""""""
 " Sections
 """"""""""""""""""""""""""""""""""""""""""
@@ -15,15 +19,15 @@ set relativenumber
 set number
 set autoindent
 set shiftwidth=2
+set tabstop=2
+set expandtab
 set wildmenu
 set showmode
 syntax on
 set laststatus=2
 set hlsearch
-
-if has("termguicolors")
-  set termguicolors
-endif
+exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
+set list
 
 
 """"""""""""""""""""""""""""""""""""""""""
