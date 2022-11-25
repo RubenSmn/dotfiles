@@ -1,4 +1,4 @@
--- load plugins, has to be first for obvious reasons
+-- load plugins
 require("ruben.plugins-setup")
 
 -- core settings
@@ -14,6 +14,7 @@ require("ruben.plugins.autopairs")
 require("ruben.plugins.leap")
 require("ruben.plugins.nvim-cmp")
 require("ruben.plugins.treesitter")
+require("ruben.plugins.gitsigns")
 
 -- lsp plugins
 require("ruben.plugins.lsp.mason")
