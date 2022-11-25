@@ -6,7 +6,7 @@ end
 treesitter.setup {
   highlight = {
     enable = true,
-    disable = {}
+    disable = { "markdown" }
   },
   indent = {
     enable = true,
