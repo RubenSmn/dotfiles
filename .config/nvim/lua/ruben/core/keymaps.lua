@@ -53,6 +53,9 @@ keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>") -- find string u
 keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>") -- list open buffers in current neovim instance
 keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>") -- list available help tags
 
+-- quick save with prettier
+keymap.set("n", "<leader>w", "<cmd>Prettier<cr> <bar> <cmd>w<cr>")
+
 -- gitsigns
 keymap.set("n", "<leader>hd", ":Gitsigns preview_hunk_inline<cr>", { silent = true })
 keymap.set('n', '<leader>hS', ":Gitsigns stage_hunk<cr>", { silent = true })
