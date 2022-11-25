@@ -66,7 +66,7 @@ protocol.CompletionItemKind = {
   '', -- Field
   '', -- Variable
   '', -- Class
-  'ﰮ', -- Interface
+  '', -- Interface
   '', -- Module
   '', -- Property
   '', -- Unit
