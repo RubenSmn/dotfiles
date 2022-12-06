@@ -8,11 +8,10 @@ if not cmp_nvim_lsp_status then
   return
 end
 
--- might ever use this
--- local typescript_status, typescript = pcall(require, "typescript")
--- if not typescript_status then
---   return
--- end
+local typescript_status, typescript = pcall(require, "typescript")
+if not typescript_status then
+  return
+end
 
 local protocol = require('vim.lsp.protocol')
 
@@ -49,13 +48,12 @@ local on_attach = function(client, bufnr)
   keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts) -- show documentation for what is under cursor
   keymap.set("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", opts) -- see outline on right hand side
 
-  -- might ever use this
-  -- -- typescript specific keymaps (e.g. rename file and update imports)
-  -- if client.name == "tsserver" then
-  --   keymap.set("n", "<leader>rf", ":TypescriptRenameFile<CR>") -- rename file and update imports
-  --   keymap.set("n", "<leader>oi", ":TypescriptOrganizeImports<CR>") -- organize imports
-  --   keymap.set("n", "<leader>ru", ":TypescriptRemoveUnused<CR>") -- remove unused variables
-  -- end
+  -- typescript specific keymaps (e.g. rename file and update imports)
+  if client.name == "tsserver" then
+    keymap.set("n", "<leader>rf", ":TypescriptRenameFile<CR>") -- rename file and update imports
+    keymap.set("n", "<leader>oi", ":TypescriptOrganizeImports<CR>") -- organize imports
+    keymap.set("n", "<leader>ru", ":TypescriptRemoveUnused<CR>") -- remove unused variables
+  end
 end
 
 protocol.CompletionItemKind = {
@@ -103,14 +101,13 @@ lspconfig.html.setup({
   on_attach = on_attach,
 })
 
--- might ever use this
--- -- configure typescript server with plugin
--- typescript.setup({
---   server = {
---     capabilities = capabilities,
---     on_attach = on_attach,
---   },
--- })
+-- configure typescript server with plugin
+typescript.setup({
+  server = {
+    capabilities = capabilities,
+    on_attach = on_attach,
+  },
+})
 
 lspconfig.tsserver.setup {
   capabilities = capabilities,
