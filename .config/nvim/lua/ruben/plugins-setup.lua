@@ -31,14 +31,14 @@ return packer.startup(function(use)
   -- packer can manage itself
   use "wbthomason/packer.nvim"
 
-  --  ne Dark colorscheme
+  --  One Dark colorscheme
   use "navarasu/onedark.nvim"
 
-  --  ua functions that many plugins use
+  --  functions that many plugins use
   --  sed by telescope
   use "nvim-lua/plenary.nvim"
 
-  --  ommenting with gc
+  --  surround stuff
   use "tpope/vim-surround"
 
   --  ommenting with gc
@@ -108,6 +108,8 @@ return packer.startup(function(use)
       ts_update()
     end,
   }
+
+  use "Yggdroot/indentLine"
 
   -- auto closing
   use("windwp/nvim-autopairs") -- autoclose parens, brackets, quotes, etc...
