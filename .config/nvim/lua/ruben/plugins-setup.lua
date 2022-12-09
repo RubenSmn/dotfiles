@@ -109,7 +109,7 @@ return packer.startup(function(use)
     end,
   }
 
-  use "Yggdroot/indentLine"
+  use "lukas-reineke/indent-blankline.nvim"
 
   -- auto closing
   use("windwp/nvim-autopairs") -- autoclose parens, brackets, quotes, etc...

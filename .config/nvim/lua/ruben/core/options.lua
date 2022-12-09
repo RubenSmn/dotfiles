@@ -27,3 +27,6 @@ opt.wildignore:append { '*/node_modules/*' }
 
 -- clipboard
 -- opt.clipboard:append("unnamedplus")
+
+-- TODO change GitSignsAdd highlighting
+-- :highlight GitSignsAdd guifg=Blue

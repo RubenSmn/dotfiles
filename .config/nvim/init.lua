@@ -15,6 +15,7 @@ require("ruben.plugins.leap")
 require("ruben.plugins.nvim-cmp")
 require("ruben.plugins.treesitter")
 require("ruben.plugins.gitsigns")
+require("ruben.plugins.indent-line")
 
 -- lsp plugins
 require("ruben.plugins.lsp.mason")
@@ -22,5 +23,4 @@ require("ruben.plugins.lsp.lspsaga")
 require("ruben.plugins.lsp.lspkind")
 require("ruben.plugins.lsp.lspconfig")
 
--- last to override other maps
 require("ruben.core.keymaps")
